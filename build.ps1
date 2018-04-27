@@ -7,7 +7,11 @@ param(
 
     [Parameter()]
     [switch]
-    $Test
+    $Test,
+
+    [Parameter()]
+    [switch]
+    $Package
 )
 
 $NeededTools = @{
@@ -67,5 +71,19 @@ if ($Bootstrap) {
         Push-Location $PSScriptRoot\test
         Invoke-Pester
         Pop-Location
+    }
+
+    if ($Package) {
+        if ((Test-Path "$PSScriptRoot\out")) {
+            Remove-Item -Path $PSScriptRoot\out -Recurse -Force
+        }
+
+        New-Item -ItemType directory -Path $PSScriptRoot\out
+
+        New-Item -ItemType directory -Path $PSScriptRoot\out\PSWsl
+        Copy-Item -Path "$PSScriptRoot\PSWsl.ps*1" -Destination "$PSScriptRoot\out\PSWsl\" -Force
+
+        Copy-Item -Path "$PSScriptRoot\README.md" -Destination "$PSScriptRoot\out\PSWsl\" -Force
+        Copy-Item -Path "$PSScriptRoot\LICENSE" -Destination "$PSScriptRoot\out\PSWsl\" -Force
     }
 }

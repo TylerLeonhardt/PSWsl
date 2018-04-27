@@ -4,15 +4,18 @@
 
 PSWsl is a PowerShell module for interacting with WSL. If PowerShell Core exists on your WSL distibution, you can easily invoke commands that return deserialized objects:
 
+In PowerShell Core on Windows
 ```powershell
 PS > $versionHashTable = Invoke-WslCommand -Distribution debian -Command '$PSVersionTable'
-PS > $versionHashTable.PSVersion
-6.0.2
+PS > $versionHashTable.Platform
+Unix
 ``` 
 
 This module simply wraps the wsl.exe, wslconfig.exe, and all the distribution.exe's in a more PowerShell friendly/specific way.
 
 ## Installation
+
+> Note: To get PowerShell Core on your WSL distribution, follow the steps [here](https://github.com/powershell/powershell#get-powershell).
 
 PSWsl is available on the PowerShell Gallery:
 
