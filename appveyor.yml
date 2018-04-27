@@ -31,7 +31,8 @@ install:
 
 test_script:
   - ps: Write-Output "No test supported in CI."
-  - ps: New-Item -Path out -ItemType Directory; New-Item -Path out\PSWsl -ItemType Directory; Copy-Item PSWsl.ps*1 out\PSWsl
+  - ps: New-Item -Path out -ItemType Directory; New-Item -Path out\PSWsl -ItemType Directory;
+  - ps: Copy-Item PSWsl.ps*1 out\PSWsl; Copy-Item LICENSE out\PSWsl; Copy-Item README.md out\PSWsl;
 
 artifacts:
   - path: out\PSWsl
