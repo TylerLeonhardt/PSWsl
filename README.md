@@ -1,5 +1,7 @@
 # PSWsl
 
+[![Build status](https://ci.appveyor.com/api/projects/status/d9gpxqarsca9pa3o/branch/master?svg=true)](https://ci.appveyor.com/project/PowerShell/pswsl/branch/master)
+
 PSWsl is a PowerShell module for interacting with WSL. If PowerShell Core exists on your WSL distibution, you can easily invoke commands that return deserialized objects:
 
 ```powershell
