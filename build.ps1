@@ -73,6 +73,10 @@ if ($Bootstrap) {
         Pop-Location
     }
 
+    if ($PSCmdlet.MyInvocation.BoundParameters.Count -eq 0) {
+        Write-Output "No build step :)"
+    }
+
     if ($Package) {
         if ((Test-Path "$PSScriptRoot\out")) {
             Remove-Item -Path $PSScriptRoot\out -Recurse -Force

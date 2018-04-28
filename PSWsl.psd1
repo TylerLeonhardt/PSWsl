@@ -12,7 +12,7 @@
     RootModule = 'PSWsl.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '0.2.0'
     
     # ID used to uniquely identify this module
     GUID = '0ac4a2b9-0beb-468d-a871-c8230eeee970'
@@ -104,7 +104,11 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '# 0.1.0
+            ReleaseNotes = '# 0.2.0
+
+Support for Verbose!
+
+# 0.1.0
 
 Initial Release'
     
