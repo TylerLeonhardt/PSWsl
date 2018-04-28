@@ -105,7 +105,7 @@ function Invoke-WslCommand {
         }
 
         # Add the distribution
-        $commandString = "$DistributionName $commandString *>&1"
+        $commandString = "$DistributionName $commandString"
 
         Write-Verbose "Running: $commandString"
         return (Invoke-Expression "$commandString")
