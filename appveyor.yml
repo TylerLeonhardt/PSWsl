@@ -30,9 +30,7 @@ install:
 # If any of the tests fail, consider the pipeline failed
 
 test_script:
-  - ps: Write-Output "No test supported in CI."
-  - ps: New-Item -Path out -ItemType Directory; New-Item -Path out\PSWsl -ItemType Directory;
-  - ps: Copy-Item PSWsl.ps*1 out\PSWsl; Copy-Item LICENSE out\PSWsl; Copy-Item README.md out\PSWsl;
+  - ps: build.ps1 -Package
 
 artifacts:
   - path: out\PSWsl

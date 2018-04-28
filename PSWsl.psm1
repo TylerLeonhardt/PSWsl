@@ -77,16 +77,19 @@ function Invoke-WslCommand {
         # We convert the script into a base64 string so we can easily pass it to the pwsh process in WSL
         switch ($PSCmdlet.ParameterSetName) {
             Command {
-                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes($Command))
+                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes(
+                    "`$VerbosePreference = '$VerbosePreference'; { $Command }.Invoke() *>&1"))
             }
             Scriptblock {
-                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes($Scriptblock.ToString()))
+                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes(
+                    "`$VerbosePreference = '$VerbosePreference'; { $($Scriptblock.ToString()) }.Invoke() *>&1"))
             }
             ScriptPath {
                 if (-not (Test-Path $ScriptPath)) {
                     throw "No path found: $ScriptPath"
                 }
-                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes(". $ScriptPath"))
+                $commandString += [convert]::tobase64string([text.encoding]::unicode.getbytes(
+                    "`$VerbosePreference = '$VerbosePreference'; . $ScriptPath *>&1"))
             }
         }
 
@@ -102,10 +105,10 @@ function Invoke-WslCommand {
         }
 
         # Add the distribution
-        $commandString = "$DistributionName $commandString"
+        $commandString = "$DistributionName $commandString *>&1"
 
         Write-Verbose "Running: $commandString"
-        return (Invoke-Expression $commandString)
+        return (Invoke-Expression "$commandString")
     }
     end {}
 }
