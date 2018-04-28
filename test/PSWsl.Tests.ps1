@@ -1,22 +1,35 @@
 Import-Module $PSScriptRoot\..\PSWsl.psd1
-
+function wslconfig.exe ($foo) {
+    $unicodeStr 
+}
 Describe "PSWsl tests" {
     Context "Get-WslDistribution tests" {
         BeforeAll {
-            $text = "Windows Subsystem for Linux Distributions:
-Ubuntu (Default)
-Debian"
+            $text = "Windows Subsystem for Linux Distributions:   Ubuntu (Default)   Debian"
             # wslconfig.exe /l returns unicode so we need to do some encoding to get it right
             $unicodeStr = [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Unicode.GetBytes($text))
+            
             Mock -CommandName "wslconfig.exe" -MockWith { 
                 return $unicodeStr 
             }
         }
         It "Can get all distributions" {
+            $text = "Windows Subsystem for Linux Distributions:   Ubuntu (Default)   Debian"
+            # wslconfig.exe /l returns unicode so we need to do some encoding to get it right
+            $unicodeStr = [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Unicode.GetBytes($text))
+            Mock -CommandName "wslconfig.exe" -MockWith { 
+                return $unicodeStr 
+            }
             Write-Host (Get-WslDistribution | Out-String)
             (Get-WslDistribution).Count | Should -Be 2
         }
         It "Can get your distribution" {
+            $text = "Windows Subsystem for Linux Distributions:   Ubuntu (Default)   Debian"
+            # wslconfig.exe /l returns unicode so we need to do some encoding to get it right
+            $unicodeStr = [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Unicode.GetBytes($text))
+            Mock -CommandName "wslconfig.exe" -MockWith { 
+                return $unicodeStr 
+            }
             $result = (Get-WslDistribution -DistributionName ubuntu)[0]
             $result.distributionName | Should -Be 'Ubuntu'
             $result.Default | Should -BeTrue
