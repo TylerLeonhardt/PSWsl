@@ -1,9 +1,14 @@
 Import-Module $PSScriptRoot\..\PSWsl.psd1
-function wslconfig.exe () {
-    $unicodeStr 
-}
+function wslconfig.exe () {}
+function wslconfig.exe ($a) {}
 Describe "PSWsl tests" {
+    Mock -CommandName "wslconfig.exe" -MockWith { 
+        return $unicodeStr 
+    }
     Context "Get-WslDistribution tests" {
+        Mock -CommandName "wslconfig.exe" -MockWith { 
+            return $unicodeStr 
+        }
         BeforeAll {
             $text = "Windows Subsystem for Linux Distributions:   Ubuntu (Default)   Debian"
             # wslconfig.exe /l returns unicode so we need to do some encoding to get it right
