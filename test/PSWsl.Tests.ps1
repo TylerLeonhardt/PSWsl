@@ -1,5 +1,5 @@
 Import-Module $PSScriptRoot\..\PSWsl.psd1
-function wslconfig.exe ($foo) {
+function wslconfig.exe () {
     $unicodeStr 
 }
 Describe "PSWsl tests" {
