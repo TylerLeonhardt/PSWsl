@@ -11,6 +11,9 @@ PS > $versionHashTable.Platform
 Unix
 ``` 
 
+Demo:
+![invoke-wslcommand](https://user-images.githubusercontent.com/2644648/39400721-d037036c-4aea-11e8-87e7-608de8fc4ca7.gif)
+
 This module simply wraps the wsl.exe, wslconfig.exe, and all the distribution.exe's in a more PowerShell friendly/specific way.
 
 ## Installation
@@ -37,6 +40,8 @@ From there you should be able to enter into PSSessions in WSL, invoke commands f
 
 ### Enter into a PSSession in a WSL distribution
 
+![enter-wsldistribution](https://user-images.githubusercontent.com/2644648/39400720-d0207aca-4aea-11e8-9f5c-6fb9b14953ff.gif)
+
 ```powershell
 # use your default distribution
 Enter-WslDistribution
@@ -46,6 +51,8 @@ Enter-WslDistribution -DistributionName ubuntu
 ```
 
 ### Invoke commands within a WSL distribution
+
+![invoke-wslcommand](https://user-images.githubusercontent.com/2644648/39400721-d037036c-4aea-11e8-87e7-608de8fc4ca7.gif)
 
 ```powershell
 # You can use a string command, script block, or file. You can also pipe in a distribution array
