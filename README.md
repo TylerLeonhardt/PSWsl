@@ -12,9 +12,16 @@ Unix
 ``` 
 
 Demo:
+
 ![invoke-wslcommand](https://user-images.githubusercontent.com/2644648/39400721-d037036c-4aea-11e8-87e7-608de8fc4ca7.gif)
 
 This module simply wraps the wsl.exe, wslconfig.exe, and all the distribution.exe's in a more PowerShell friendly/specific way.
+
+## Why?
+
+* Quickly test scripts and modules against linux without having to stand up a VM or container.
+* Write multi-OS scripts that leverage PowerShell on Windows while also interacting with a Linux environment.
+* Interact with Linux-only tools and utilities with PowerShell.
 
 ## Installation
 
