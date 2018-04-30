@@ -179,9 +179,9 @@ function Get-WslDistribution {
             '( ' + ( $DistributionName.ForEach( { "`$_.DistributionName   -like `"$_`"" } ) -join ' -or ' ) + ' )') )
         
         if ($Default) {
-            return $distributionArray.Where( { $_.Default } )
+            return @($distributionArray).Where( { $_.Default } )
         } else {
-            return $distributionArray.Where( $Filter )
+            return @($distributionArray).Where( $Filter )
         }
     }
     
