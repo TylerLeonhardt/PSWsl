@@ -12,7 +12,7 @@
     RootModule = 'PSWsl.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.2.1'
+    ModuleVersion = '0.2.2'
     
     # ID used to uniquely identify this module
     GUID = '0ac4a2b9-0beb-468d-a871-c8230eeee970'
@@ -104,7 +104,11 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '# 0.2.1
+            ReleaseNotes = '# 0.2.2
+
+Fixes an issue that people with only 1 WSL distribution were running into.
+            
+# 0.2.1
 
 A small fix for commands that did not return anything.
 
