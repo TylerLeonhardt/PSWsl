@@ -162,7 +162,7 @@ function Get-WslDistribution {
         $distributionArray = $array | ForEach-Object {
             if ($_.Contains(' (Default)')) {
                 return [PSCustomObject]@{
-                    DistributionName = ($_ -Split " (Default)")[0]
+                    DistributionName = ($_ -Split "\s")[0]
                     Default = $true
                 }
             } else {
