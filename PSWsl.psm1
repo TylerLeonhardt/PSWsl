@@ -158,6 +158,7 @@ function Get-WslDistribution {
     begin {
         # parse
         $array = [System.Text.Encoding]::Unicode.GetString([System.Text.Encoding]::UTF8.GetBytes((wslconfig.exe /l))) -split '\s\s+' | Select-Object -Skip 1 -Unique
+        # ignore the last item which is all whitespace
         $array = $array[0..($array.length-2)]
         $distributionArray = $array | ForEach-Object {
             if ($_.Contains(' (Default)')) {
