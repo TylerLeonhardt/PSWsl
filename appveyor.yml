@@ -30,7 +30,7 @@ install:
 # If any of the tests fail, consider the pipeline failed
 
 test_script:
-  - ps: .\build.ps1 -Package
+  - ps: .\build.ps1 -Test -Package
 
 artifacts:
   - path: out\PSWsl
